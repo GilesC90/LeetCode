@@ -1,0 +1,21 @@
+var singleNumber = function(nums) {
+    let obj = {}
+
+    for (let i of nums) {
+        if (!obj[i]) {
+            console.log("Not Inside: " + i)
+            obj[i] = 1
+        }
+        else {
+            console.log("Is Inside: " + i)
+            obj[i]++
+        }
+    }
+
+    for (let i in obj) {
+        if (obj[i] == 1) {
+            console.log("The Answer: " + i)
+            return i
+        }
+    }
+};
