@@ -1,0 +1,16 @@
+var missingNumber = function(nums) {
+    let length = (nums.length + 1);
+    sumTotal = 0;
+    missing = 0;
+    //nums.sort()
+    for( let i = 0; i < length; i++) {
+        //console.log(i)
+        sumTotal += i
+        if(nums[i]) {
+            //console.log(nums[i])
+            missing += nums[i]
+        }
+    }
+    return sumTotal - missing
+    
+};
