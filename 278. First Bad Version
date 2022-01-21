@@ -1,0 +1,50 @@
+// You are a product manager and currently leading a team to develop a new product. Unfortunately, 
+// the latest version of your product fails the quality check. Since each version is developed based on the 
+// previous version, all the versions after a bad version are also bad.
+
+// Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which 
+// causes all the following ones to be bad.
+
+// You are given an API bool isBadVersion(version) which returns whether version is bad. Implement a function 
+// to find the first bad version. You should minimize the number of calls to the API.
+
+var solution = function(isBadVersion) {
+    /**
+     * @param {integer} n Total versions
+     * @return {integer} The first bad version
+     */
+    return function(n) {
+        // binary search where we want to find the 
+        // bad version start point
+        let start = 1;
+        let end = n
+        while (start < end)
+            {
+                // create a midpoint
+                let mid = Math.floor((start + end) / 2)
+                // is our midpoint is bad then we know 
+                // that the first bad version is either
+                // that element or before it
+                if(isBadVersion(mid))
+                    {
+                        // move our endpoint to mid to half
+                        // our scope
+                        end = mid
+                    }
+                // if our midpoint is fine, then we know 
+                // that our first bad element is after it
+                else
+                    {
+                        // move our startpoint to the mid to
+                        // half our scope.  We add 1 because
+                        // we alread know that the original 
+                        // midpoint is fine
+                        start = mid + 1
+                    }
+            }
+        // we will eventually narrow our scope to the point where
+        // the start of the bad versions is established.  We want 
+        // to return that startpoint.
+        return start
+    };
+};
