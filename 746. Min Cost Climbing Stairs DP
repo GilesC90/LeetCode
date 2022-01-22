@@ -1,0 +1,41 @@
+// You are given an integer array cost where cost[i] is the cost
+// of ith step on a staircase. Once you pay the cost, you can
+// either climb one or two steps.
+
+// You can either start from the step with index 0, or the
+// step with index 1.
+
+// Return the minimum cost to reach the top of the floor.
+
+/**
+ * @param {number[]} cost
+ * @return {number}
+ */
+var minCostClimbingStairs = function(cost) {
+    // Lets first establish where we have 
+    // been so far
+    let oneStepBehind = cost[1];
+    let twoStepsBehind = cost[0];
+    // Create a pointer to show our current place
+    let current = 0;
+    // Instantiate a loop starting at our first unknown value
+    for (let i = 2; i < cost.length; i++)
+        {
+            // Our current value is going to be the sum of
+            // wherever we currently are in the Cost array 
+            // plus the smaller value of the two previous
+            // steps
+            current = cost[i] + Math.min(oneStepBehind, twoStepsBehind)
+            // Update our step pointers 
+            twoStepsBehind = oneStepBehind;
+            oneStepBehind = current;
+        }
+    // Remember, we arent attempting to return the current value, we
+    // are instead returning the minimum cost to REACH the top floor
+    // which is one step ahead of the current value.  In the example
+    // [10, 15, 20], it is cheaper for us to to reach the top floor
+    // if we pay 15 to get to index 1 and jump two steps than to pay
+    // 10 to get to index 0 and 15 at index 1 to take two steps or
+    // pay 10 to get to index 0 and 20 at index 2 to take one step
+    return Math.min(oneStepBehind, twoStepsBehind)
+};
