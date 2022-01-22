@@ -1,0 +1,45 @@
+// You are climbing a staircase. It takes n steps to reach the top.
+
+// Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var climbStairs = function(n) {
+    // At first sight, it isnt obvious to tell that we've seen this before
+    // that we've seen this before.  When you try a bottom-up approach to 
+    // the problem (seeing how many ways can you get to first step..second
+    // step..third step...etc), you notice that we are simply performing
+    // the fibonacci sequence.  
+    
+    // In that case, we must first return our known values 
+    if (n == 1)
+        {
+            return 1;
+        }
+    if (n == 2)
+        {
+            return 2;
+        }
+    // Next, we must instantiate these values as variables to 
+    // keep track of where we have been.
+    let oneStep = 2;
+    let twoStep = 1;
+    // Lets also create a variable to define where we are currently
+    let current = 0;
+    // We begin our loop at 3 because we already know the values
+    // of 1 and 2
+    for (let i = 3; i <= n; i++)
+        {
+            // Implement the fibonacci formula onto our current
+            // value
+            current = oneStep + twoStep;
+            // Next, update each of our pointer variables
+            twoStep = oneStep;
+            oneStep = current;
+            
+        }
+    // Now we can return the value of n 
+    return current;
+};
