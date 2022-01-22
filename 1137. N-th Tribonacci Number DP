@@ -1,0 +1,44 @@
+// The Tribonacci sequence Tn is defined as follows: 
+
+// T0 = 0, T1 = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var tribonacci = function(n) {
+    // first, instantiate our known values
+    // from the tribonacci sequence formula
+    if (n == 0)
+        {
+            return 0;
+        }
+    
+     if (n == 1 || n == 2)
+        {
+            return 1;
+        }
+    // now we must create our dynamic variables
+    // that will allow us to easily keep track 
+    // of values
+    let previous = 1;
+    let lastPrevious = 1;
+    let previousBeforeLast = 0;
+    // create a variable to declare where we are
+    // currently in the tribonacci chain
+    let current = 0;
+    // now loop from 3 until we reach n
+    for(let i = 3; i <= n; i++)
+        {
+            // implement the tribonacci formula onto our current
+            // value
+            current = previous + lastPrevious + previousBeforeLast;
+            // update each of our pointer variables
+            previousBeforeLast = lastPrevious;
+            lastPrevious = previous;
+            previous = current;
+        }
+    // when we have reached n, we can return what the 
+    // value is 
+    return current;
+};
