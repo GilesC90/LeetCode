@@ -11,7 +11,7 @@ var climbStairs = function(n) {
     // that we've seen this before.  When you try a bottom-up approach to 
     // the problem (seeing how many ways can you get to first step..second
     // step..third step...etc), you notice that we are simply performing
-    // the fibonacci sequence.  
+    // a fibonacci-esque sequence.  
     
     // In that case, we must first return our known values 
     if (n == 1)
