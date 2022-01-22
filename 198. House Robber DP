@@ -1,0 +1,61 @@
+// You are a professional robber planning to rob houses along a street. 
+// Each house has a certain amount of money stashed, the only constraint 
+// stopping you from robbing each of them is that adjacent houses have 
+// security systems connected and it will automatically contact the police
+// if two adjacent houses were broken into on the same night.
+
+// Given an integer array nums representing the amount of money of each house, 
+// return the maximum amount of money you can rob tonight without alerting 
+// the police.
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var rob = function(nums) {
+    // Let us first take care of the edge
+    // cases of having an array length of
+    // either 1 or 2
+    if (nums.length == 1)
+        {
+            // There can only be one answer
+            return nums[0]
+        }
+    if (nums.length == 2)
+        {
+            // We just want the max out of 
+            // the pair
+            return Math.max(nums[0], nums[1])
+        }
+    // Now we can create the variables that will
+    // help us keep track of the houses we have 
+    // been/should go to and our current value
+    let first = nums[0];
+    // We want second to represent the Math.max
+    // function because we want to start off 
+    // from the same place as our array with 
+    // a length of 2.  We that to be our highest
+    // value and we want our current value to 
+    // represent us beginning there.
+    let second = Math.max(nums[0], nums[1]);
+    let current = second;
+    // Create a loop beginning at out first unknown
+    // position
+    for (let i = 2; i < nums.length; i++)
+        {
+            // Our current value will be the greater of 
+            // either where we are at index i plus two 
+            // houses away orthe house directly behind
+            // our position
+            current = Math.max(first + nums[i], second)
+            // Now we need to increment our first and 
+            // second values to represent what is now
+            // the house behind us and the house two
+            // lots away.
+            first = second;
+            second = current; 
+        }
+    // We will now present the value that yeilds the highest 
+    // return
+    return current;
+};
