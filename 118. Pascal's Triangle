@@ -8,8 +8,9 @@ Example 1:
 
 Input: numRows = 5
 Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
-Example 2:
 
+// I changed the spacing for example 2
+Example 2:
 Input: numRows = 1
 Output: [[1]]
  
@@ -20,20 +21,20 @@ Constraints:
  * @param {number} numRows
  * @return {number[][]}
  */
- var generate = function(numRows) {
+var generate = function (numRows) {
     let pascal = [];
 
     if (numRows === 0) {
-    return pascal;
+        return pascal;
     }
 
     pascal.push([1])
 
     let lastLevel = []
-    while(pascal.length < numRows ) {
+    while (pascal.length < numRows) {
         let newLevel = [1]
         for (let i = 0; i < lastLevel.length - 1; i++) {
-            newLevel.push(lastLevel[i] + lastLevel[i+1] )
+            newLevel.push(lastLevel[i] + lastLevel[i + 1])
         }
         newLevel.push(1);
         pascal.push(newLevel);
@@ -41,3 +42,6 @@ Constraints:
     }
     return pascal;
 };
+
+
+
