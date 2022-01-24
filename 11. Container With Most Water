@@ -11,6 +11,7 @@
  * @return {number}
  */
  var maxArea = function(height) {
+     //JACK'S COMMENT
     let start = 0
     let end = height.length - 1
     let area = 0
