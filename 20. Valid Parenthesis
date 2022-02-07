@@ -9,6 +9,13 @@
  * @param {string} s
  * @return {boolean}
  */
+
+/**
+ * Runtime: 93 ms, faster than 51.23% of JavaScript online submissions for Valid Parentheses.
+ * Memory Usage: 41.9 MB, less than 23.54% of JavaScript online submissions for Valid Parentheses.
+ * Date: 2/7/2022
+*/
+
 var isValid = function(s) {
     let stack = [];
     const legend = {
