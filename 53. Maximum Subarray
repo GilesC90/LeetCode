@@ -6,6 +6,12 @@
  * @param {number[]} nums
  * @return {number}
  */
+
+ /** 
+ * Runtime: 126 ms, faster than 45.95% of JavaScript online submissions for Maximum Subarray.
+ * Memory Usage: 50.1 MB, less than 25.96% of JavaScript online submissions for Maximum Subarray.
+*/
+
 var maxSubArray = function(nums) {
     // instantiate our max value 
     // as our first value at the 
