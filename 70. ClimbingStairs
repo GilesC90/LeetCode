@@ -22,6 +22,11 @@ Explanation: There are three ways to climb to the top.
 
 */
 
+/**
+ * Runtime: 83 ms, faster than 50.87% of JavaScript online submissions for Climbing Stairs.
+ * Memory Usage: 41.7 MB, less than 14.86% of JavaScript online submissions for Climbing Stairs.
+*/
+
 var climbStairs = function(n) {
     let output = [];
     output[0] = 1;
